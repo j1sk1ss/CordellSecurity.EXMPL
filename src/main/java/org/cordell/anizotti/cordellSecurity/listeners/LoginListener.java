@@ -1,9 +1,9 @@
-package org.cordell.anizotti.anizottiSecurity.listeners;
+package org.cordell.anizotti.cordellSecurity.listeners;
 
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerLoginEvent;
-import org.cordell.anizotti.anizottiSecurity.AnizottiSecurity;
+import org.cordell.anizotti.cordellSecurity.CordellSecurity;
 
 
 public class LoginListener implements Listener {
@@ -17,10 +17,19 @@ public class LoginListener implements Listener {
         var nickname = player.getName();
 
         try {
-            if (!AnizottiSecurity.playerWhiteList.getString(nickname).equals(ipString)) {
-                System.out.println("[AnizottiSecurity] Player IP not allowed!");
-                e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "IP is wrong for provided nickname!\nWho are you?\nAlso - this is AnizottiSecurity plugin here!");
+            var ip = CordellSecurity.playerWhiteList.getString(nickname);
+            if (ip == null) {
+                System.out.println("[CordellSecurity] Player IP not found!");
+                e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "Who are you?\nAlso - this is CordellSecurity plugin here!");
+                return;
             }
+
+            if (!ip.equals(ipString)) {
+                System.out.println("[CordellSecurity] Player IP not allowed!");
+                e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "IP is wrong for provided nickname!\nAlso - this is CordellSecurity plugin here!");
+            }
+
+            player.sendMessage("[Cordell Security] You are logged in under host: " + ip);
         } catch (Exception ex) {
             e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, "I don`t know you! Or I broken...\nAnyway you don`t pass.");
             throw new RuntimeException(ex);
