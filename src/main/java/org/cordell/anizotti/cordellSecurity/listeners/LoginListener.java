@@ -36,7 +36,7 @@ public class LoginListener implements Listener {
                 return;
             }
 
-            if (!ip.equals(ipString)) {
+            if (!ip.equals(ipString) && !ip.equals("any")) {
                 System.out.println("Player IP not allowed!");
                 e.disallow(PlayerLoginEvent.Result.KICK_WHITELIST, title);
             }
