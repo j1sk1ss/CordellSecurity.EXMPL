@@ -11,4 +11,8 @@ In other hand, you can allow to enter under any IP for provided player: </br>
 nickname:any
 ```
 
-This plugin also works like whitelist.
+This plugin also works like whitelist. </br>
+
+-------------------------------------------------------------------------
+Dependencies:  </br>
+- CordellDB (https://github.com/j1sk1ss/CordellDB.EXMPL)
