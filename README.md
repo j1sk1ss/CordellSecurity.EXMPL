@@ -1,5 +1,5 @@
 Simple idea for setting IP to nickname.</br>
-For example you, some person use VPN with 193.159.11.123 IP. </br>
+For example, some person use VPN with 193.159.11.123 IP. </br>
 In server dir find file, called "player_whitelist.txt" and add new line: </br>
 ```
 nickname:193.159.11.123
@@ -11,4 +11,8 @@ In other hand, you can allow to enter under any IP for provided player: </br>
 nickname:any
 ```
 
-This plugin also works like whitelist.
+This plugin also works like whitelist. </br>
+
+-------------------------------------------------------------------------
+Dependencies:  </br>
+- CordellDB (https://github.com/j1sk1ss/CordellDB.EXMPL)
